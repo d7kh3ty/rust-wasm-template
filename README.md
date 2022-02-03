@@ -2,6 +2,7 @@
 
 ```
 sdl2
+npm
 ```
 
 # instructions for use
