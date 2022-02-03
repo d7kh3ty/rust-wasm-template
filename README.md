@@ -27,7 +27,11 @@ git pull
 # Activate PATH and other environment variables in the current terminal
 source ./emsdk_env.sh
 
-cd ..
+cd ../static
 
-make; make serve
+# Install required node modules
+npm install
+
+# Run the web server
+npm run serve
 ```
