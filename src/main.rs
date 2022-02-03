@@ -5,7 +5,7 @@ use sdl2::rect::Rect;
 use sdl2::video::Window;
 use std::process;
 
-// define any data that is required by the main loop
+/// all data required by the main loop
 pub struct State {
     sdl_context: sdl2::Sdl,
     canvas: sdl2::render::Canvas<Window>,
@@ -13,6 +13,7 @@ pub struct State {
 }
 
 impl State {
+    /// create a new state object, initialising any sdl2 objects that are required
     pub fn new() -> Result<Self, anyhow::Error> {
         let sdl_context = sdl2::init().unwrap();
 
@@ -39,6 +40,7 @@ impl State {
     }
 }
 
+/// the main loop, sdl2 stuff and changes to the state object happen here
 fn event_loop(state: &mut State) {
     let rect = &mut state.rect;
     let mut events = state.sdl_context.event_pump().unwrap();
@@ -92,6 +94,7 @@ fn event_loop(state: &mut State) {
     let _ = canvas.present();
 }
 
+/// run the event loop within emscripten
 impl emscripten_main_loop::MainLoop for State {
     fn main_loop(&mut self) -> emscripten_main_loop::MainLoopEvent {
         event_loop(self);
