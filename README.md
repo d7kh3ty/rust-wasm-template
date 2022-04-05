@@ -1,3 +1,5 @@
+a template to get you starting using SDL2 with Rust
+
 # requirements
 
 ```
